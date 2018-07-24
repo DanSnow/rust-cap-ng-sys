@@ -1,0 +1,15 @@
+cargo-features = ["edition"]
+
+[package]
+name = "cap-ng-sys"
+version = "0.1.0"
+authors = ["DanSnow <dododavid006@gmail.com>"]
+edition = "2018"
+links = "cap-ng"
+
+[dependencies]
+bitflags = "^1.0.3"
+libc = "^0.2.42"
+
+[build-dependencies]
+pkg-config = "^0.3"

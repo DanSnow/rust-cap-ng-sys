@@ -4,6 +4,9 @@ cargo-features = ["edition"]
 name = "cap-ng-sys"
 version = "0.1.0"
 authors = ["DanSnow <dododavid006@gmail.com>"]
+description = "Native binding for libcap-ng"
+readme = "Readme.md"
+keywords = ["ffi", "cap-ng", "capabilities", "linux-capabilities"]
 edition = "2018"
 links = "cap-ng"
 

@@ -3,10 +3,10 @@ extern crate bitflags;
 extern crate libc;
 
 mod sys;
-pub use crate::sys::Cap;
+pub use self::sys::Cap;
 use std::ffi::CStr;
 
-pub use crate::sys::{
+pub use self::sys::{
     capng_act_t, capng_flags_t, capng_print_t, capng_results_t, capng_select_t, capng_type_t,
 };
 

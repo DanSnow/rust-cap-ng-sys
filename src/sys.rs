@@ -1,5 +1,7 @@
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
 
+use libc;
+
 #[derive(Copy, Clone)]
 #[repr(u32)]
 pub enum Cap {
@@ -99,23 +101,26 @@ bitflags! {
 }
 
 extern "C" {
-    crate fn capng_clear(set: u32);
-    crate fn capng_fill(set: u32);
+    pub(crate) fn capng_clear(set: u32);
+    pub(crate) fn capng_fill(set: u32);
     pub fn capng_setpid(pid: libc::c_int);
     pub fn capng_get_caps_process() -> libc::c_int;
-    crate fn capng_update(action: capng_act_t, type_: u32, capability: libc::c_uint)
-        -> libc::c_int;
-    crate fn capng_apply(set: u32) -> libc::c_int;
+    pub(crate) fn capng_update(
+        action: capng_act_t,
+        type_: u32,
+        capability: libc::c_uint,
+    ) -> libc::c_int;
+    pub(crate) fn capng_apply(set: u32) -> libc::c_int;
     pub fn capng_lock() -> libc::c_int;
-    crate fn capng_change_id(uid: libc::c_int, gid: libc::c_int, flag: u32) -> libc::c_int;
+    pub(crate) fn capng_change_id(uid: libc::c_int, gid: libc::c_int, flag: u32) -> libc::c_int;
     pub fn capng_get_caps_fd(fd: libc::c_int) -> libc::c_int;
     pub fn capng_apply_caps_fd(fd: libc::c_int) -> libc::c_int;
-    crate fn capng_have_capabilities(set: u32) -> capng_results_t;
-    crate fn capng_have_capability(which: u32, capability: libc::c_uint) -> libc::c_int;
-    crate fn capng_print_caps_numeric(where_: capng_print_t, set: u32) -> *mut libc::c_char;
-    crate fn capng_print_caps_text(where_: capng_print_t, which: u32) -> *mut libc::c_char;
+    pub(crate) fn capng_have_capabilities(set: u32) -> capng_results_t;
+    pub(crate) fn capng_have_capability(which: u32, capability: libc::c_uint) -> libc::c_int;
+    pub(crate) fn capng_print_caps_numeric(where_: capng_print_t, set: u32) -> *mut libc::c_char;
+    pub(crate) fn capng_print_caps_text(where_: capng_print_t, which: u32) -> *mut libc::c_char;
     pub fn capng_name_to_capability(name: *const libc::c_char) -> libc::c_int;
-    crate fn capng_capability_to_name(capability: libc::c_uint) -> *const libc::c_char;
+    pub(crate) fn capng_capability_to_name(capability: libc::c_uint) -> *const libc::c_char;
     pub fn capng_save_state() -> *mut libc::c_void;
     pub fn capng_restore_state(state: *mut *mut libc::c_void);
 }

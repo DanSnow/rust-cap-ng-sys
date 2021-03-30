@@ -9,7 +9,7 @@ links = "cap-ng"
 
 [dependencies]
 bitflags = "^1.2.1"
-libc = "^0.2.89"
+libc = "^0.2.92"
 
 [build-dependencies]
 pkg-config = "^0.3"
